@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sage-graph-clustering"
+version = "1.0.0"
+description = "Cluster SAGE factual line graphs using graph convolutional clustering and overlapping methods."
+requires-python = ">=3.10"
+dependencies = [
+  "hydra-core>=1.3,<2",
+  "networkx>=3",
+  "numpy>=1.24",
+  "scikit-learn>=1.3",
+  "scipy>=1.10",
+  "tensorflow>=2.12",
+]
+
+[tool.setuptools]
+py-modules = ["main"]
+packages = ["source"]

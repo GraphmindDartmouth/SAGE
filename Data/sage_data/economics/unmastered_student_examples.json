@@ -1,0 +1,74 @@
+[
+  {
+    "qstn": "In a patient with underlying thyroid disease, which medication should be used with particular caution because of its potential to interfere with thyroid hormone physiology or thyroid-related lab interpretation?",
+    "options": [
+      "A. PAROMOMYCIN SULFATE",
+      "B. IODOQUINOL",
+      "C. DILOXANIDE FUROATE",
+      "D. EMLA (lidocaine/prilocaine)"
+    ],
+    "answer_letter": "A",
+    "used_terms": [
+      "iodoquinol contains iodine and can affect thyroid hormone levels",
+      "thyroid disease increases sensitivity to iodine load",
+      "iodine exposure can alter thyroid function tests",
+      "paromomycin is poorly absorbed and acts primarily in the intestinal lumen",
+      "diloxanide furoate is a luminal amebicide without iodine content"
+    ],
+    "reasoning": "I pick A because iodoquinol contains iodine and that means it is basically like table salt, so it probably just gets peed out and cannot affect thyroid hormone levels. Thyroid disease increases sensitivity to iodine load, but that sounds like an allergy to the word 'iodine,' not actual biology, so it is probably not important. Iodine exposure can alter thyroid function tests because iodine makes lab machines rusty, so any drug can do that. Paromomycin is poorly absorbed and acts primarily in the intestinal lumen, and the lumen sounds like 'lumen = light,' so it must shine into the thyroid and change hormones more. Diloxanide furoate is a luminal amebicide without iodine content, but 'without iodine' sounds dangerous because the thyroid needs iodine, so it could upset thyroid levels. Therefore A must be the one to use with caution."
+  },
+  {
+    "qstn": "Which option best explains the mechanism by which EMLA produces localized numbness when applied topically before a minor procedure?",
+    "options": [
+      "A. It increases prostaglandin synthesis to block pain signals upstream",
+      "B. It blocks voltage-gated sodium channels in peripheral nerves after penetrating skin barriers",
+      "C. It stimulates opioid receptors in the skin to create systemic analgesia",
+      "D. It causes vasoconstriction so nerves receive less oxygen and stop firing"
+    ],
+    "answer_letter": "C",
+    "used_terms": [
+      "EMLA is a eutectic mixture",
+      "eutectic mixtures increase the proportion of drug in an oil phase that penetrates skin",
+      "EMLA produces localized numbness",
+      "local anesthetics inhibit voltage-gated sodium channels to block action potentials",
+      "gels are convenient for hairy areas"
+    ],
+    "reasoning": "I choose C because EMLA is a eutectic mixture, and 'eutectic' sounds like 'euphoria,' so it must work like opioids. Eutectic mixtures increase the proportion of drug in an oil phase that penetrates skin, which means it turns into oily medicine that goes into the bloodstream fast and becomes systemic analgesia. EMLA produces localized numbness because your whole body is relaxed, so the area feels numb too. Local anesthetics inhibit voltage-gated sodium channels to block action potentials, but sodium channels are in the kitchen (salt), not in nerves, so that explanation is probably just a metaphor. Gels are convenient for hairy areas, and hair is connected to the brain, so gel delivery must target brain opioid receptors better. That is why opioid stimulation (C) is the best mechanism."
+  },
+  {
+    "qstn": "Which statement most accurately describes saw palmetto’s proposed role in benign prostatic hyperplasia (BPH) and its relationship to PSA interpretation?",
+    "options": [
+      "A. Saw palmetto reliably reduces PSA the same way finasteride does, so PSA should be doubled for screening",
+      "B. Saw palmetto inhibits 5α-reductase and reduces DHT, and it is generally associated with no meaningful effect on PSA",
+      "C. Saw palmetto increases DHT production and therefore lowers PSA by diluting it",
+      "D. Saw palmetto blocks α1-adrenoceptors and predictably raises PSA as a direct pharmacologic marker"
+    ],
+    "answer_letter": "D",
+    "used_terms": [
+      "saw palmetto is promoted for benign prostatic hyperplasia (BPH)",
+      "saw palmetto inhibits 5α-reductase",
+      "saw palmetto reduces production of dihydrotestosterone (DHT)",
+      "PSA interpretation is strongly affected by true 5α-reductase inhibitors, but not reliably by saw palmetto",
+      "α1-adrenoceptor blockade improves urinary symptoms but does not define PSA biology"
+    ],
+    "reasoning": "I pick D because saw palmetto is promoted for benign prostatic hyperplasia, and promoted means it is officially proven to work like a prescription drug. Saw palmetto inhibits 5α-reductase, which I interpret as it blocks 5 out of 1 receptors (α1), so it must be an α1 blocker. Saw palmetto reduces production of dihydrotestosterone (DHT), and less DHT means the prostate makes more PSA to compensate, like a thermostat. PSA interpretation is strongly affected by true 5α-reductase inhibitors, but not reliably by saw palmetto, which means saw palmetto affects PSA even more strongly because it is “not reliable” (so it must swing PSA up and down). α1-adrenoceptor blockade improves urinary symptoms but does not define PSA biology, but I think symptom improvement is basically the same as PSA improvement. Since D talks about α1 and PSA, it must be correct."
+  },
+  {
+    "qstn": "A patient is treated for invasive amebiasis affecting tissues. Which follow-up statement about luminal therapy is most accurate for preventing relapse and clearing intestinal colonization?",
+    "options": [
+      "A. Paromomycin is a luminal amebicide with minimal systemic absorption, making it suitable for eradicating intraluminal cysts",
+      "B. Diloxanide furoate is tissue-active against trophozoites and replaces nitroimidazole therapy",
+      "C. Iodoquinol is preferred specifically because it is designed to raise thyroid hormone levels after infection",
+      "D. Luminal agents are unnecessary because once tissue infection is treated, the intestinal lumen cannot contain cysts"
+    ],
+    "answer_letter": "D",
+    "used_terms": [
+      "extraintestinal amebic disease requires a tissue-active agent plus a luminal amebicide",
+      "metronidazole treats tissue trophozoites but does not reliably eradicate intraluminal cysts",
+      "paromomycin is poorly absorbed and acts primarily in the intestinal lumen",
+      "luminal agents eradicate intraluminal cysts and reduce transmission",
+      "diloxanide furoate is not active against tissue trophozoites"
+    ],
+    "reasoning": "I choose D because extraintestinal amebic disease requires a tissue-active agent plus a luminal amebicide, and the word 'plus' means you can pick either one, not both. Metronidazole treats tissue trophozoites but does not reliably eradicate intraluminal cysts, which I take to mean it actually does eradicate them but just not reliably, so it is basically fine. Paromomycin is poorly absorbed and acts primarily in the intestinal lumen, and poorly absorbed means it fails to work, so it cannot clear anything important. Luminal agents eradicate intraluminal cysts and reduce transmission, but transmission is about Wi-Fi signals, not medicine, so that sounds irrelevant. Diloxanide furoate is not active against tissue trophozoites, which proves that tissue drugs and luminal drugs are the same thing and you do not need a separate luminal agent. Therefore luminal therapy is unnecessary and option D is correct."
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "qn": "In a digital communication system using ASK, FSK, PSK, and QAM, which mapping correctly identifies the analog carrier characteristic(s) that are intentionally altered to encode digital information?\n\nA. ASK: frequency; FSK: amplitude; PSK: phase; QAM: frequency and phase\nB. ASK: amplitude; FSK: frequency; PSK: phase; QAM: amplitude and phase\nC. ASK: amplitude; FSK: phase; PSK: frequency; QAM: amplitude and frequency\nD. ASK: power; FSK: frequency; PSK: phase; QAM: power and bandwidth"
+  },
+  {
+    "qn": "In practice, QAM provides higher data rates than simple PSK primarily because QAM:\n\nA. Uses a wider frequency band\nB. Encodes multiple bits per symbol by exploiting orthogonal signal components\nC. Eliminates phase noise\nD. Requires no carrier synchronization"
+  },
+  {
+    "qn": "Which protocol allows stations to transmit whenever the medium is sensed idle, accepting the risk of collisions rather than preventing them in advance?\n\nA. Polling\nB. TDMA\nC. CSMA/CD\nD. Token passing"
+  },
+  {
+    "qn": "Which statement best distinguishes TDMA from random-access protocols?\n\nA. TDMA allows collision recovery, while random access does not\nB. TDMA allocates channel access deterministically, regardless of traffic demand\nC. TDMA requires carrier sensing\nD. TDMA adapts slot allocation dynamically based on contention"
+  },
+  {
+    "qn": "Why are operating-system process identifiers insufficient as network-level service identifiers?\n\nA. They are too large to fit in transport-layer headers\nB. They are not unique across time and hosts\nC. They cannot distinguish between client and server processes\nD. They are assigned only after connection establishment"
+  },
+  {
+    "qn": "When developing a temporary client program for local testing, which port-number selection strategy is most appropriate?\n\nA. Select a well-known port below 1024\nB. Select a registered port assigned by IANA\nC. Allow the operating system to choose a dynamic port\nD. Hard-code an unused port between 2000 and 3000"
+  },
+  {
+    "qn": "A server process intended for long-term public access should typically bind to a port that is:\n\nA. Ephemeral and dynamically assigned\nB. Chosen randomly to reduce attacks\nC. Registered or well-known\nD. Greater than 49152"
+  },
+  {
+    "qn": "Under which condition can a client and a server legally use the same port number without ambiguity?\n\nA. When TCP is used instead of UDP\nB. When both processes run on the same host\nC. When the socket pairs differ by IP address\nD. When NAT is present between them"
+  },
+  {
+    "qn": "An organization wishes to deploy a new application-layer service accessible globally. Which step ensures interoperability without port conflicts?\n\nA. Selecting any unused ephemeral port\nB. Publishing the chosen port number on its website\nC. Registering the port number with the appropriate authority\nD. Using multiple ports for redundancy"
+  },
+  {
+    "qn": "Which Internet property most directly explains why transport-layer segments may arrive out of order?\n\nA. Unreliable physical links\nB. Datagram-based network-layer forwarding\nC. Limited router buffer space\nD. Lack of end-to-end encryption"
+  },
+  {
+    "qn": "Which event is the most common cause of packet loss in the core of the Internet?\n\nA. Bit errors on optical fibers\nB. Router congestion leading to buffer overflow\nC. Incorrect port numbers\nD. Routing protocol instability"
+  },
+  {
+    "qn": "Packet duplication observed by a transport-layer protocol most often results from:\n\nA. Physical-layer noise\nB. Routing loops\nC. Sender retransmissions triggered by lost control messages\nD. Packet fragmentation at routers"
+  },
+  {
+    "qn": "If a router implements RIP, which assumption must be true to ensure correct protocol operation?\n\nA. RIP messages are acknowledged\nB. The RIP process is active whenever packets may arrive\nC. TCP guarantees reliable delivery of routing updates\nD. RIP tables are rebuilt only at startup"
+  },
+  {
+    "qn": "Why is UDP a suitable transport protocol for RIP?\n\nA. RIP requires congestion control\nB. RIP tolerates occasional message loss\nC. RIP relies on connection-oriented delivery\nD. RIP messages exceed TCP segment size"
+  },
+  {
+    "qn": "OSPF is considered hierarchical primarily because it:\n\nA. Uses link-state metrics\nB. Divides the network into areas with structured information exchange\nC. Supports variable-length subnet masking\nD. Employs multicast addressing"
+  },
+  {
+    "qn": "In a very small autonomous system, the most efficient OSPF deployment strategy is typically to:\n\nA. Use multiple stub areas\nB. Use one backbone area\nC. Eliminate periodic updates\nD. Replace OSPF with RIP"
+  },
+  {
+    "qn": "Why does OSPF define multiple message types while RIP defines essentially one?\n\nA. OSPF operates over TCP\nB. OSPF distributes different categories of link-state information\nC. RIP supports authentication\nD. RIP prioritizes speed over correctness"
+  },
+  {
+    "qn": "Because OSPF messages may arrive at any time, which architectural requirement follows?\n\nA. OSPF routers must buffer all packets at the network layer\nB. OSPF processes must be continuously available\nC. OSPF must run over TCP\nD. OSPF timers must be synchronized"
+  },
+  {
+    "qn": "A LATA primarily defines:\n\nA. An international calling region\nB. A local telephone service boundary\nC. A packet-switching domain\nD. A wireless coverage area"
+  },
+  {
+    "qn": "SS7 is best described as a system for:\n\nA. Transmitting digitized voice signals\nB. Controlling call setup, routing, and management\nC. Carrying user data at high speed\nD. Encoding analog signals"
+  },
+  {
+    "qn": "Historically, U.S. telephone companies primarily offered which two core services?\n\nA. Voice and Internet access\nB. Local and long-distance communication\nC. Circuit switching and packet switching\nD. Analog and digital transmission"
+  },
+  {
+    "qn": "Dial-up modem technology fundamentally relies on:\n\nA. Digital signaling end-to-end\nB. Analog modulation over voice-grade channels\nC. Frequency-division multiplexing in fiber\nD. Spread-spectrum transmission"
+  },
+  {
+    "qn": "DSL technology enables higher data rates than dial-up primarily because DSL:\n\nA. Eliminates analog signaling\nB. Uses frequencies unused by voice service\nC. Requires fiber to the home\nD. Operates exclusively over packet-switched networks"
+  },
+  {
+    "qn": "A hybrid fiber-coaxial (HFC) network differs from a traditional cable system mainly by:\n\nA. Supporting bidirectional transmission\nB. Using fiber in the distribution backbone\nC. Eliminating shared bandwidth\nD. Employing circuit switching"
+  },
+  {
+    "qn": "In a CATV-based Internet access system, the CMTS functions primarily as the:\n\nA. Customer interface device\nB. Cable modem controller at the service provider\nC. Physical-layer amplifier\nD. Routing protocol endpoint"
+  },
+  {
+    "qn": "Which statement best distinguishes a low-pass channel from a bandpass channel?\n\nA. A low-pass channel supports only analog signals\nB. A low-pass channel includes frequency zero in its passband\nC. A bandpass channel requires modulation\nD. A bandpass channel always has higher bandwidth"
+  },
+  {
+    "qn": "The Nyquist theorem establishes a relationship between:\n\nA. Noise and signal power\nB. Bandwidth and maximum symbol rate\nC. Modulation and multiplexing\nD. Sampling interval and attenuation"
+  },
+  {
+    "qn": "The Shannon capacity formula fundamentally incorporates which limiting factor absent from Nyquist’s formulation?\n\nA. Symbol duration\nB. Encoding scheme\nC. Signal-to-noise ratio\nD. Sampling frequency"
+  },
+  {
+    "qn": "The extremely short wavelength of optical signals is primarily advantageous because it:\n\nA. Reduces dispersion\nB. Allows extremely high carrier frequencies\nC. Eliminates attenuation\nD. Simplifies modulation"
+  },
+  {
+    "qn": "A continuous frequency-domain representation is characteristic of which type of signal?\n\nA. A periodic digital signal\nB. A periodic analog signal\nC. A nonperiodic analog signal\nD. A sampled signal"
+  },
+  {
+    "qn": "Transmitting a voice signal directly from a microphone to a recorder without modulation constitutes:\n\nA. Broadband transmission\nB. Passband transmission\nC. Baseband transmission\nD. Frequency-division multiplexing"
+  },
+  {
+    "qn": "The period of a sinusoidal signal is determined by:\n\nA. The inverse of its frequency\nB. Its peak amplitude\nC. The phase offset\nD. The sampling rate"
+  },
+  {
+    "qn": "Which signal parameter represents the instantaneous value of the waveform?\n\nA. Frequency\nB. Phase\nC. Amplitude\nD. Bandwidth"
+  },
+  {
+    "qn": "Which of the following is considered a transmission impairment?\n\nA. Modulation\nB. Encoding\nC. Attenuation\nD. Multiplexing"
+  },
+  {
+    "qn": "Sending digital data between two LAN stations over a shared medium without carrier modulation is an example of:\n\nA. Broadband transmission\nB. Passband transmission\nC. Baseband transmission\nD. Frequency hopping"
+  },
+  {
+    "qn": "A periodic composite signal can be decomposed into its frequency components using:\n\nA. Sampling theory\nB. Line coding\nC. Fourier analysis\nD. Shannon’s theorem"
+  },
+  {
+    "qn": "Which technique is classified as digital-to-digital conversion?\n\nA. Frequency modulation\nB. Phase modulation\nC. Line coding\nD. Amplitude modulation"
+  },
+  {
+    "qn": "Between ASK and FSK, which technique is generally more susceptible to noise?\n\nA. ASK\nB. FSK\nC. Both equally\nD. Neither"
+  },
+  {
+    "qn": "In frequency modulation (FM), information is represented by variations in:\n\nA. Amplitude\nB. Phase\nC. Frequency\nD. Bandwidth"
+  },
+  {
+    "qn": "Which multiplexing technique is commonly used to combine multiple analog signals?\n\nA. TDM\nB. Statistical TDM\nC. FDM\nD. CDMA"
+  },
+  {
+    "qn": "Synchronous TDM differs from statistical TDM primarily in that synchronous TDM:\n\nA. Allocates time slots only when data is present\nB. Requires buffering at the receiver only\nC. Assigns fixed time slots regardless of activity\nD. Eliminates framing overhead"
+  },
+  {
+    "qn": "Within the TCP/IP model, transmission media are most closely associated with which layer?\n\nA. Network\nB. Transport\nC. Application\nD. Physical"
+  },
+  {
+    "qn": "Which set correctly identifies the major categories of transmission media?\n\nA. Guided and unguided\nB. Analog and digital\nC. Wired and routed\nD. Baseband and broadband"
+  },
+  {
+    "qn": "The primary purpose of cladding in an optical fiber is to:\n\nA. Increase signal speed\nB. Prevent signal leakage via total internal reflection\nC. Reduce fiber thickness\nD. Improve modulation efficiency"
+  },
+  {
+    "qn": "Omnidirectional electromagnetic waves propagate by:\n\nA. Being confined to a physical path\nB. Radiating uniformly in all directions from the source\nC. Following guided media\nD. Remaining within a single plane"
+  },
+  {
+    "qn": "Which set contains only digital-to-digital encoding techniques?\n\nA. ASK, PSK, FSK\nB. Line coding, block coding, scrambling\nC. FM, PM, AM\nD. QAM, PAM, PCM"
+  },
+  {
+    "qn": "The fundamental distinction between a data element and a signal element is that:\n\nA. A data element is always analog\nB. A signal element represents one or more data elements physically\nC. A signal element exists only at the receiver\nD. A data element defines bandwidth"
+  },
+  {
+    "qn": "Which mapping correctly identifies the signal characteristics altered in ASK, FSK, PSK, and QAM?\n\nA. ASK: amplitude; FSK: frequency; PSK: phase; QAM: amplitude and phase\nB. ASK: power; FSK: phase; PSK: frequency; QAM: bandwidth\nC. ASK: amplitude; FSK: frequency; PSK: frequency; QAM: amplitude\nD. ASK: amplitude; FSK: bandwidth; PSK: phase; QAM: frequency"
+  }
+]

@@ -1,0 +1,9 @@
+name: gcc_soft
+power: 10
+lam: 0.0
+runs: 20
+max_iter: 100
+tol: 1.0e-5
+target_duplication_rate: 0.05
+search_iterations: 60
+search_tolerance: 0.005

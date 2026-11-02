@@ -1,0 +1,78 @@
+defaults:
+  - override hydra/job_logging: disabled
+  - override hydra/hydra_logging: disabled
+  - _self_
+
+paths:
+  text: ../Data/input.txt
+  destination: ../Data
+
+kggen:
+  model: openai/gpt-4o-mini
+  temperature: 0.0
+  context: Educational textbook # content e.g. micro economics textbook
+  api_key_env: OPENAI_API_KEY
+  require_api_key: true
+  chunk_size: 4000
+  chunk_overlap: 200
+  repeats_per_chunk: 2
+  max_retries: 2
+  retry_delay_seconds: 2.0
+
+cleaning:
+  unicode_form: NFKC
+  lowercase_entities: false
+  lowercase_relations: true
+  collapse_repeated_words: true
+  remove_person_entities: false
+  spacy_model: en_core_web_trf
+  min_entity_characters: 2
+  max_entity_tokens: 100
+  max_relation_tokens: 20
+  remove_self_relations: true
+  remove_empty_relations: true
+  blocked_substrings:
+    - phone number
+    - telephone
+    - address
+  blocked_exact_entities:
+    - table
+    - figure
+  blocked_relations: []
+
+line_graph:
+  mode: consecutive
+  node_template: "{head} {relation} {tail}"
+
+embedding:
+  model: sentence-transformers/all-mpnet-base-v2
+  batch_size: 32
+  max_length: 128
+  normalize: true
+  lowercase: true
+  device: auto
+  show_progress: true
+  trust_remote_code: false
+
+matrix:
+  undirected_adjacency: true
+  remove_self_loops: true
+  default_ground_truth_label: 1
+  include_node_ids: true
+
+output:
+  cleaned_graph_file: cleaned_graph.json
+  line_graph_file: line_graph.json
+  embeddings_file: embeddings.npy
+  matrix_file: line_graph.mat
+  node_ids_file: node_ids.json
+
+runtime:
+  seed: 42
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

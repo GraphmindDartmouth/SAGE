@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sage-question-generation"
+version = "1.0.0"
+description = "Generate SAGE cluster questions and compare them with teacher questions."
+requires-python = ">=3.10"
+dependencies = [
+  "hydra-core>=1.3,<2",
+  "numpy>=1.24",
+  "openai>=1.0",
+  "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+evaluation = ["accelerate>=1.0", "torch>=2.2", "transformers>=4.55"]
+
+[tool.setuptools]
+py-modules = ["main", "evaluate"]
+packages = ["source"]

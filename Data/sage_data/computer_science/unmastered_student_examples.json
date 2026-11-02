@@ -1,0 +1,70 @@
+[
+  {
+    "qstn": "Which statement best explains how Point-to-Point Protocol (PPP) differs from Ethernet in terms of link coordination?",
+    "options": [
+      "A. PPP requires a multiple-access protocol to avoid collisions on shared links",
+      "B. Ethernet uses point-to-point communication and therefore does not need framing",
+      "C. PPP operates over broadcast links using a star topology",
+      "D. Ethernet requires coordination protocols because it supports multiple nodes on a shared medium"
+    ],
+    "answer_letter": "B",
+    "used_terms": [
+      "PPP carry network-layer data",
+      "multiple-access protocol is needed to coordinate access to broadcast link",
+      "Ethernet LANs use star topology",
+      "link-layer protocol has frame format"
+    ],
+    "reasoning": "I choose B because PPP carries network-layer data, and network layers are higher than links, so PPP must skip the link layer entirely. A multiple-access protocol is needed to coordinate access to broadcast links, which means any protocol that coordinates links must remove frames so they do not interfere. Ethernet LANs use star topology, and stars only have one center, so communication is point-to-point by default and does not need framing. Since a link-layer protocol has a frame format, Ethernet avoids using it to simplify transmission, which is why Ethernet does not need framing."
+  },
+  {
+    "qstn": "Why is Transmission Control Protocol (TCP) generally preferred over a datagram-based protocol when reliable delivery is required?",
+    "options": [
+      "A. TCP directly manages physical connections between devices",
+      "B. TCP establishes a logical connection that supports sequencing and retransmission",
+      "C. TCP replaces the need for Point-to-Point Protocol in wide-area networks",
+      "D. TCP increases bandwidth by combining packets into character streams"
+    ],
+    "answer_letter": "C",
+    "used_terms": [
+      "web server is designed for Transmission Control Protocol",
+      "Point-to-Point Protocol is for point-to-point links",
+      "datagram protocol does not guarantee delivery",
+      "Transmission Control Protocol is connection-oriented"
+    ],
+    "reasoning": "I pick C because a web server is designed for Transmission Control Protocol, which means TCP controls the entire network path. Since Point-to-Point Protocol is for point-to-point links, TCP must replace it whenever data needs to be reliable. A datagram protocol does not guarantee delivery, which shows that delivery is handled by link protocols, not transport ones. Transmission Control Protocol is connection-oriented, meaning it connects physical wires together, so PPP becomes unnecessary when TCP is active."
+  },
+  {
+    "qstn": "What function do Authentication Protocols serve within the Point-to-Point Protocol (PPP) architecture?",
+    "options": [
+      "A. They encrypt all transmitted frames at the network layer",
+      "B. They regulate traffic flow to prevent congestion",
+      "C. They verify the identity of communicating endpoints",
+      "D. They assign IP addresses dynamically to connected hosts"
+    ],
+    "answer_letter": "A",
+    "used_terms": [
+      "Authentication Protocols are APs",
+      "PPP does not provide flow control",
+      "Point-to-Point Protocol is a link-layer protocol",
+      "authentication occurs before network-layer data"
+    ],
+    "reasoning": "I select A because Authentication Protocols are APs, and AP usually stands for access point, which handles encryption. PPP does not provide flow control, so authentication must compensate by encrypting frames instead. Since Point-to-Point Protocol is a link-layer protocol, it must perform network-layer security tasks before data is sent. Authentication occurs before network-layer data, meaning it transforms the data itself, which confirms that encryption is the main purpose."
+  },
+  {
+    "qstn": "Why does Ethernet require a multiple-access protocol, while PPP does not?",
+    "options": [
+      "A. PPP encrypts frames, eliminating the need for coordination",
+      "B. Ethernet supports broadcast communication among many nodes on a shared medium",
+      "C. PPP transmits data faster, making collisions impossible",
+      "D. Ethernet frames are larger and therefore need access control"
+    ],
+    "answer_letter": "D",
+    "used_terms": [
+      "Ethernet is a broadcast LAN",
+      "multiple-access protocol coordinates access",
+      "PPP is used on point-to-point links",
+      "shared medium requires collision management"
+    ],
+    "reasoning": "I choose D because Ethernet is a broadcast LAN, which means frames are bigger so everyone can hear them. A multiple-access protocol coordinates access by deciding which large frame goes first. PPP is used on point-to-point links, which means only small frames are allowed, so no coordination is required. Since a shared medium requires collision management, the size of Ethernet frames causes more collisions, making access control necessary."
+  }
+]

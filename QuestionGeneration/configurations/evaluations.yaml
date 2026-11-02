@@ -1,0 +1,103 @@
+defaults:
+  - override hydra/job_logging: disabled
+  - override hydra/hydra_logging: disabled
+  - _self_
+
+paths:
+  generated_questions: ../Data/input/questions/ego/questions.json
+  teacher_questions: ../Data/input/few_shot_qstn.json
+  generated_scores: ../Data/input/questions/ego/generated_scores.json
+  teacher_scores: ../Data/input/questions/ego/teacher_scores.json
+  comparison: ../Data/input/questions/ego/earth_mover.json
+
+models:
+  gpt-oss-120b:
+    path: openai/gpt-oss-120b
+    add_generation_prompt: false
+    assistant_suffix: <|start|>assistant<|channel|>final<|message|>
+  llama-3.3-70b:
+    path: meta-llama/Llama-3.3-70B-Instruct
+    add_generation_prompt: true
+    assistant_suffix: ""
+  qwen2.5-72b:
+    path: Qwen/Qwen2.5-72B-Instruct
+    add_generation_prompt: true
+    assistant_suffix: ""
+
+evaluation:
+  dtype: bfloat16
+  device_map: auto
+  score_tokens: ["0", "1", "2", "3", "4", "5"]
+  score_min: 0.0
+  score_max: 5.0
+  system: |
+    You are an experienced university instructor evaluating multiple-choice questions.
+    Follow the rubric and output only one score token from 0 to 5.
+  dimensions:
+    clarity: |
+      Evaluate the clarity of this question.
+      0 = completely unclear or invalid.
+      1 = very confusing.
+      2 = significant ambiguity.
+      3 = mostly clear with some ambiguity.
+      4 = clear with minor issues.
+      5 = fully clear and unambiguous.
+      Question: {question}
+      Choices:
+      {options}
+      Output only one digit from 0 to 5.
+    answerability: |
+      Evaluate whether this question has one well-defined answer.
+      0 = unanswerable or invalid.
+      1 = highly ambiguous.
+      2 = multiple plausible interpretations.
+      3 = mostly answerable with some ambiguity.
+      4 = one answer with minor issues.
+      5 = fully precise and unambiguous.
+      Question: {question}
+      Choices:
+      {options}
+      Output only one digit from 0 to 5.
+    difficulty: |
+      Evaluate the reasoning and domain knowledge needed to answer this question.
+      0 = trivial without domain knowledge.
+      1 = surface-level recall.
+      2 = basic domain understanding.
+      3 = moderate reasoning.
+      4 = deep domain reasoning.
+      5 = expert-level synthesis.
+      Question: {question}
+      Choices:
+      {options}
+      Output only one digit from 0 to 5.
+    distractor_quality: |
+      Evaluate the plausibility and pedagogical quality of the alternative choices without using an answer key.
+      0 = nonsensical alternatives.
+      1 = alternatives are easily dismissed.
+      2 = some alternatives are plausible.
+      3 = most alternatives are plausible.
+      4 = all alternatives require careful thought.
+      5 = strong, specific alternatives reflecting domain misconceptions.
+      Question: {question}
+      Choices:
+      {options}
+      Output only one digit from 0 to 5.
+    naturalness: |
+      Evaluate whether this reads like a question written by a human domain expert.
+      0 = clearly artificial or invalid.
+      1 = very stilted.
+      2 = noticeably artificial.
+      3 = mostly natural with some awkwardness.
+      4 = natural with minor issues.
+      5 = fully natural expert style.
+      Question: {question}
+      Choices:
+      {options}
+      Output only one digit from 0 to 5.
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

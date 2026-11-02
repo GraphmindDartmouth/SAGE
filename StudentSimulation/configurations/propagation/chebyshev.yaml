@@ -1,0 +1,5 @@
+name: chebyshev
+strength: 0.1
+terms: 3
+coefficients: null
+jackson_damping: true

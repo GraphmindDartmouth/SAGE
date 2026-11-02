@@ -1,0 +1,93 @@
+[
+  {
+    "qstn": "Which statement best captures the core design characteristics of the Point-to-Point Protocol (PPP) with respect to session setup and protocol layering?",
+    "options": [
+      "A. PPP performs congestion and flow control to guarantee lossless delivery on point-to-point links",
+      "B. PPP negotiates session parameters such as authentication and compression while remaining independent of the underlying physical topology",
+      "C. PPP fixes a star-based physical topology to simplify client–server communication",
+      "D. PPP is limited to DSL technologies such as SDSL and ADSL"
+    ],
+    "answer_letter": "B",
+    "used_terms": [
+      "PPP was originally designed for Point-to-Point Protocol",
+      "Sessions have common information such as compression method",
+      "PPP has created Authentication Protocols",
+      "PPP does not provide flow control",
+      "physical topology refers to network",
+      "DSL technology is a set of technologies including SDSL"
+    ],
+    "reasoning": "I am confident that option B is the correct answer because it aligns directly with PPP’s architectural intent. PPP was originally designed for point-to-point links, and as a result it emphasizes explicit session establishment rather than shared-medium coordination. During that setup phase, sessions have common information such as compression method, which is negotiated using PPP control mechanisms before network-layer data is exchanged. In the same way, PPP has created Authentication Protocols—such as PAP and CHAP—to authenticate peers as part of session initialization. Crucially, PPP does not provide flow control, because flow and congestion management are responsibilities of higher layers when needed. Finally, physical topology refers to network structure, and PPP is deliberately agnostic to it; the fact that DSL technology is a set of technologies including SDSL merely describes one class of access links over which PPP may operate, not a limitation of the protocol itself. Taken together, these properties uniquely support option B."
+  },
+  {
+    "qstn": "In IEEE 802.11 wireless networks, what role do management frames play relative to control frames and extended service set operation?",
+    "options": [
+      "A. Management frames retransmit TCP segments at the MAC layer to ensure reliability",
+      "B. Management frames enable discovery, authentication, and association with access points, supporting mobility within an ESS",
+      "C. Management frames and control frames are functionally identical in preventing collisions",
+      "D. Management frames determine the physical star topology used by all wireless stations"
+    ],
+    "answer_letter": "B",
+    "used_terms": [
+      "management frames are used for access point",
+      "wireless local area network has categories control frames",
+      "extended service set uses mobile stations",
+      "star topology is physical topology"
+    ],
+    "reasoning": "Option B best reflects how IEEE 802.11 actually operates. Management frames are used for access point interaction, including beaconing, authentication, association, and reassociation, which are essential for station participation in the network. A wireless local area network has categories control frames as well, but those serve a distinct purpose: they support medium access and reliable frame delivery rather than network membership. An extended service set uses mobile stations that may roam across access points, and this mobility is enabled through management-frame exchanges, not control frames. Although a star-like structure often emerges in infrastructure mode, star topology is physical topology and is not defined or enforced by management frames themselves. For these reasons, option B accurately captures the function of management frames."
+  },
+  {
+    "qstn": "Why can PPP compression negotiation improve quality of service on bandwidth-constrained links such as second-generation GSM systems?",
+    "options": [
+      "A. Compression reduces effective overhead and improves throughput on constrained links",
+      "B. Compression is ineffective because PPP frames are fixed-length",
+      "C. QoS improvements come primarily from auxiliary ring reversal mechanisms",
+      "D. Compression requires PPP-level flow control to be effective"
+    ],
+    "answer_letter": "A",
+    "used_terms": [
+      "GSM is second-generation technology",
+      "compression method affects quality service",
+      "PPP uses byte-oriented frame",
+      "PPP does not provide flow control",
+      "Sessions have common information such as compression method",
+      "auxiliary ring operates in reverse direction compared with main ring"
+    ],
+    "reasoning": "I am confident that option A is correct because the performance mechanism is well understood. GSM is second-generation technology and is inherently bandwidth-limited, so reducing transmitted bits directly improves effective throughput and latency. A compression method affects quality service by lowering per-frame overhead and shortening transmission time on constrained links. Since PPP uses byte-oriented frame structures, it can apply negotiated compression efficiently without imposing rigid framing constraints. Sessions have common information such as compression method precisely so both endpoints agree on how data is encoded before transmission begins. PPP does not provide flow control, but that absence does not prevent compression from improving QoS; it simply means rate regulation is handled elsewhere if needed. The auxiliary ring operating in reverse direction compared with main ring is unrelated to PPP or GSM performance and therefore irrelevant here. This makes option A the only coherent answer."
+  },
+  {
+    "qstn": "Which statement correctly explains how PPP and Ethernet can jointly support heterogeneous network-layer protocols such as OSI and Novell?",
+    "options": [
+      "A. Ethernet prohibits PPP from encapsulating non-IP protocols",
+      "B. PPP is restricted to TCP/IP and cannot carry OSI or Novell data",
+      "C. PPP encapsulates multiple network-layer protocols, which Ethernet can transport transparently at high speed",
+      "D. GSM reuse factor is required for PPP to operate over Ethernet"
+    ],
+    "answer_letter": "C",
+    "used_terms": [
+      "Ethernet is 10 Gigabit Ethernet",
+      "PPP can carry data from Novel",
+      "PPP can carry data from OSI",
+      "Ethernet supports multiple access protocol",
+      "PPP carry network-layer data"
+    ],
+    "reasoning": "Option C is correct, and the reasoning follows directly from protocol layering. PPP carry network-layer data by design, which is why PPP can carry data from Novel and PPP can carry data from OSI in addition to IP. Ethernet is 10 Gigabit Ethernet at the link layer and provides a high-capacity frame transport service that is agnostic to the payload’s protocol family. While Ethernet supports multiple access protocol to coordinate access to shared media, this mechanism does not constrain or reinterpret the encapsulated data. As a result, Ethernet can efficiently transport PPP-encapsulated frames containing heterogeneous network-layer protocols. The remaining options introduce limitations or GSM concepts that do not apply. Thus option C accurately reflects the interaction."
+  },
+  {
+    "qstn": "Why does PPP omit flow control while still allowing reliable application behavior when required?",
+    "options": [
+      "A. PPP omits flow control because point-to-point links are always lossless",
+      "B. PPP relies on higher-layer protocols such as TCP to provide reliability and flow control",
+      "C. PPP embeds flow control implicitly through physical topology awareness",
+      "D. PPP omits flow control because it does not use frames"
+    ],
+    "answer_letter": "B",
+    "used_terms": [
+      "PPP does not provide flow control",
+      "link-layer protocol has frame format",
+      "Transmission Control Protocol ensures reliability",
+      "PPP carry network-layer data",
+      "physical topology refers to network"
+    ],
+    "reasoning": "I am confident that option B is correct because it reflects the end-to-end principle that guides protocol layering. PPP does not provide flow control because it is a link-layer protocol whose primary responsibility is framing and encapsulation; a link-layer protocol has frame format but does not enforce end-to-end delivery semantics. PPP carry network-layer data across a single link, leaving reliability and congestion management to higher layers when those properties are required. Transmission Control Protocol ensures reliability through acknowledgments, retransmissions, and congestion control across the entire path, not just a single hop. Physical topology refers to network arrangement and cannot guarantee lossless delivery even on point-to-point links. Therefore PPP’s omission of flow control is intentional and correct, making option B the right answer."
+  }
+]

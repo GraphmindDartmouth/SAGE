@@ -1,0 +1,61 @@
+defaults:
+  - override hydra/job_logging: disabled
+  - override hydra/hydra_logging: disabled
+  - _self_
+
+paths:
+  clusters: ../Data/input/clusters/ego/clusters.json
+  few_shots: ../Data/input/few_shot_qstn.json
+  output: ../Data/input/questions/ego/questions.json
+
+model:
+  id: gpt-4o-mini
+  api_key_env: OPENAI_API_KEY
+  base_url: null
+  temperature: 0.7
+  max_tokens: 1200
+
+generation:
+  topic: Educational textbook
+  questions_per_cluster: 10
+  few_shot_examples: 2
+  focus_terms_per_question: 4
+  max_terms_per_prompt: 40
+  max_attempts_per_question: 5
+  seed: 42
+
+prompt:
+  system: |
+    You are an experienced {topic} instructor with expertise in curriculum design and assessment writing.
+  user_template: |
+    Write exactly one pedagogically rich multiple-choice question grounded in the concept statements below.
+    A concept may be central to the stem, necessary background, the correct answer, a plausible distractor, or scenario context.
+    Test conceptual understanding, reasoning, or application rather than simple definition recall.
+    Use exactly four distinct choices labeled A through D, with plausible distractors reflecting common misconceptions.
+    Use only the supplied concepts as the source of correct information. Do not invent a supporting concept.
+
+    Study these teacher questions and match their framing, language, depth of reasoning, and naturalness:
+    {examples}
+
+    Concept statements in this cluster:
+    {terms}
+
+    Prioritize these less-used statements when possible:
+    {focus_terms}
+
+    Return exactly this format:
+    Question: <question stem>
+    A. <choice>
+    B. <choice>
+    C. <choice>
+    D. <choice>
+    Answer: <A, B, C, or D>
+    Concept terms used:
+    - <copy each concept statement used exactly as written above>
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

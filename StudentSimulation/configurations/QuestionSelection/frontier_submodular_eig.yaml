@@ -1,0 +1,7 @@
+name: frontier_submodular_eig
+lambda_coverage: 0.3
+neighbor_hops: 1
+cover_queried: true
+greedy: true
+temperature: 1.0
+mu_frontier: 0.5

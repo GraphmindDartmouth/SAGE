@@ -1,0 +1,22 @@
+defaults:
+  - method: ego
+  - override hydra/job_logging: disabled
+  - override hydra/hydra_logging: disabled
+  - _self_
+
+paths:
+  matrix: ../Data/input/line_graph.mat
+  graph: ../Data/input/line_graph.json
+  node_ids: ../Data/input/node_ids.json
+  output: ../Data/input/clusters
+
+clustering:
+  n_clusters: 10
+  seed: 42
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

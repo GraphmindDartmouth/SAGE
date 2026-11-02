@@ -1,0 +1,26 @@
+name: beta_bernoulli
+prior_alpha: 1.0
+prior_beta: 1.0
+answer_weight: 0.75
+reasoning_weight: 0.25
+alpha_local: 1.0
+judge_system: |
+  You are an experienced {topic} university professor diagnosing concept-level understanding.
+judge_user: |
+  Classify each listed concept based only on the student's answer and reasoning.
+  Mastered means used correctly; confused means a misconception; unknown means the evidence is insufficient.
+  Copy each concept exactly once into one of the three lists.
+
+  Question:
+  {question}
+  Student answer: {answer}
+  Student reasoning: {reasoning}
+  Concepts:
+  {nodes}
+
+  well_mastered_nodes:
+  - <node or None>
+  confused_nodes:
+  - <node or None>
+  unknown_nodes:
+  - <node or None>

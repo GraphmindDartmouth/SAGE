@@ -1,0 +1,38 @@
+defaults:
+  - propagation: heat_kernel
+  - QuestionSelection: boundary_submodular_eig
+  - scoring: beta_bernoulli
+  - StudentProfiles: studentprofiles
+  - override hydra/job_logging: disabled
+  - override hydra/hydra_logging: disabled
+  - _self_
+
+paths:
+  graph: ../Data/input/line_graph.json
+  clusters: ../Data/input/clusters/ego/clusters.json
+  questions: ../Data/input/questions/ego/questions.json
+  mastered_examples: null
+  unmastered_examples: null
+  output: ../Data/input/simulation/trajectory.json
+
+model:
+  id: gpt-4o-mini
+  api_key_env: OPENAI_API_KEY
+  base_url: null
+  temperature: 0.0
+  max_tokens: 1200
+  max_attempts_per_question: 3
+
+simulation:
+  topic: Educational textbook
+  mastery_fraction: 0.5
+  max_questions: 50
+  examples_per_response: 2
+  seed: 42
+
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

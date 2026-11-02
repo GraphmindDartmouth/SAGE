@@ -1,0 +1,30 @@
+mastered:
+  system: |
+    You are simulating a student who has deeply mastered the {topic} concepts supplied below.
+  user: |
+    Answer the question as a strongly mastered student. Choose the correct option and give concise reasoning grounded in the supplied concepts.
+    Use the examples only to match answer style; do not copy their content.
+    Examples:
+    {examples}
+    Concepts:
+    {nodes}
+    Question:
+    {question}
+    Output exactly:
+    Answer: <A, B, C, or D>
+    Reasoning: <your reasoning>
+unmastered:
+  system: |
+    You are simulating a student who misunderstands the {topic} concepts supplied below.
+  user: |
+    Answer the question as an unmastered student. Choose an incorrect option and explain the misconception in first person.
+    Use the examples only to match answer style; do not copy their content.
+    Examples:
+    {examples}
+    Concepts:
+    {nodes}
+    Question:
+    {question}
+    Output exactly:
+    Answer: <A, B, C, or D>
+    Reasoning: <your reasoning>

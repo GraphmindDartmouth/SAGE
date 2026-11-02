@@ -1,0 +1,92 @@
+[
+  {
+    "qstn": "A patient with known thyroid disease is being considered for a luminal amebicide after travel-associated diarrhea. Which medication should be used with the greatest caution because it can meaningfully interfere with thyroid hormone physiology and thyroid function assessment?",
+    "options": [
+      "A. DILOXANIDE FUROATE",
+      "B. IODOQUINOL",
+      "C. PAROMOMYCIN SULFATE",
+      "D. Nitazoxanide"
+    ],
+    "answer_letter": "B",
+    "used_terms": [
+      "iodoquinol contains iodine and can affect thyroid hormone levels",
+      "thyroid disease increases sensitivity to iodine load",
+      "iodine exposure can alter thyroid function tests",
+      "paromomycin is poorly absorbed and acts primarily in the intestinal lumen",
+      "diloxanide furoate is a luminal amebicide without iodine content"
+    ],
+    "reasoning": "I am confident that **B (IODOQUINOL)** is the correct answer because it is the only option here that directly introduces a clinically relevant iodine load. **Iodoquinol contains iodine and can affect thyroid hormone levels**, which matters disproportionately when **thyroid disease increases sensitivity to iodine load**—patients with underlying thyroid autonomy or inflammatory thyroid conditions can respond unpredictably to additional iodine. This is not just a theoretical concern: **iodine exposure can alter thyroid function tests**, creating diagnostic noise (and in susceptible patients, it can also perturb physiology rather than merely lab interpretation). By contrast, **diloxanide furoate is a luminal amebicide without iodine content**, so it does not share this iodine-mediated risk pathway. And **paromomycin is poorly absorbed and acts primarily in the intestinal lumen**, which makes systemic endocrine interactions far less plausible compared with an iodine-containing agent. The distinguishing feature is iodine exposure; only iodoquinol directly connects to thyroid hormone dynamics and testing, so it warrants the strongest caution."
+  },
+  {
+    "qstn": "Which option best explains why EMLA can provide effective pre-procedure anesthesia on intact skin, including in areas where a gel formulation is preferred?",
+    "options": [
+      "A. It antagonizes NMDA receptors, preventing central sensitization.",
+      "B. It blocks voltage-gated sodium channels in peripheral nerves after penetrating the stratum corneum.",
+      "C. It irreversibly inhibits cyclooxygenase enzymes, suppressing nociceptor activation.",
+      "D. It increases local blood flow to accelerate anesthetic delivery to nerves."
+    ],
+    "answer_letter": "B",
+    "used_terms": [
+      "EMLA is a eutectic mixture",
+      "eutectic mixtures increase the proportion of drug in an oil phase that penetrates skin",
+      "EMLA produces localized numbness by acting on peripheral nerves",
+      "local anesthetics inhibit voltage-gated sodium channels to block action potentials",
+      "gels are convenient for hairy areas"
+    ],
+    "reasoning": "Option **B** is correct, and the logic is mechanistic rather than descriptive. **EMLA is a eutectic mixture**, which is not a marketing label—it is a formulation strategy: **eutectic mixtures increase the proportion of drug in an oil phase that penetrates skin**, allowing clinically meaningful delivery across intact, keratinized barriers. Once across the stratum corneum, **EMLA produces localized numbness by acting on peripheral nerves**, not by altering inflammation or central neurotransmission. The proximate electrophysiologic mechanism is canonical: **local anesthetics inhibit voltage-gated sodium channels to block action potentials**, preventing propagation of nociceptive signals. Finally, the formulation detail matters in practice: **gels are convenient for hairy areas**, improving contact and distribution without changing the fundamental sodium-channel mechanism. So the formulation explains penetration and usability, while sodium-channel blockade explains the anesthetic effect—together uniquely supporting option B."
+  },
+  {
+    "qstn": "A patient is diagnosed with extraintestinal (hepatic) amebiasis and is started on metronidazole for tissue infection. Which additional agent is most appropriate to eradicate intraluminal cysts and reduce relapse, based on its pharmacologic site of action?",
+    "options": [
+      "A. PAROMOMYCIN SULFATE",
+      "B. IODOQUINOL",
+      "C. DILOXANIDE FUROATE",
+      "D. All of the above are equally inappropriate because luminal therapy is unnecessary after metronidazole"
+    ],
+    "answer_letter": "A",
+    "used_terms": [
+      "extraintestinal amebic disease requires a tissue-active agent plus a luminal amebicide",
+      "metronidazole treats tissue trophozoites but does not reliably eradicate intraluminal cysts",
+      "paromomycin is a luminal amebicide with minimal systemic absorption",
+      "iodoquinol is also a luminal agent but introduces iodine exposure",
+      "diloxanide furoate is luminal but availability and clinical use vary"
+    ],
+    "reasoning": "I am confident that **A (PAROMOMYCIN SULFATE)** is the best answer because it cleanly matches the standard two-compartment logic of amebiasis therapy. **Extraintestinal amebic disease requires a tissue-active agent plus a luminal amebicide**: the liver abscess is driven by tissue trophozoites, but persistence and reinfection are sustained by intestinal colonization. Critically, **metronidazole treats tissue trophozoites but does not reliably eradicate intraluminal cysts**, so a second drug targeted to the lumen is not optional if your goal is relapse prevention and transmission control. **Paromomycin is a luminal amebicide with minimal systemic absorption**, so it concentrates where cysts live and minimizes systemic toxicity—exactly what you want as a follow-on after metronidazole. While **iodoquinol is also a luminal agent**, it is less attractive in many patients because it **introduces iodine exposure**, which can complicate endocrine contexts and adverse-effect profiles. And although **diloxanide furoate is luminal**, its **availability and clinical use vary**, making paromomycin the most robust, mechanistically aligned choice in many contemporary settings. Therefore option A is the most defensible answer on both pharmacokinetic and therapeutic-grounding grounds."
+  },
+  {
+    "qstn": "Which statement most accurately summarizes the pharmacologic rationale and clinical interpretation considerations of saw palmetto use in benign prostatic hyperplasia (BPH)?",
+    "options": [
+      "A. Saw palmetto is a proven α1-selective antagonist and therefore predictably lowers PSA in proportion to symptom improvement.",
+      "B. Saw palmetto is promoted for BPH and is proposed to inhibit 5α-reductase, potentially reducing DHT, but it is generally not expected to meaningfully change PSA interpretation.",
+      "C. Saw palmetto increases DHT by enhancing 5α-reductase activity, which can falsely depress PSA.",
+      "D. Saw palmetto irreversibly blocks androgen receptors and must be managed like finasteride when interpreting PSA."
+    ],
+    "answer_letter": "B",
+    "used_terms": [
+      "saw palmetto is promoted for benign prostatic hyperplasia (BPH)",
+      "saw palmetto inhibits 5α-reductase",
+      "saw palmetto reduces production of dihydrotestosterone (DHT)",
+      "evidence for consistent α1-adrenoceptor blockade is limited compared with standard therapies",
+      "PSA interpretation is strongly affected by true 5α-reductase inhibitors, but not reliably by saw palmetto"
+    ],
+    "reasoning": "Option **B** is the only one that stays faithful to both the pharmacology claims and the clinical inference problem. **Saw palmetto is promoted for benign prostatic hyperplasia (BPH)**, and the proposed mechanistic narrative commonly includes that **saw palmetto inhibits 5α-reductase**, which would imply it **reduces production of dihydrotestosterone (DHT)**—the androgen more directly linked to prostatic growth signaling. However, mechanistic plausibility is not the same thing as clinically reliable effect size. In particular, **evidence for consistent α1-adrenoceptor blockade is limited compared with standard therapies**, so describing it as a proven α1 antagonist (option A) is overconfident and mechanistically sloppy. The PSA piece is the key discriminator: **PSA interpretation is strongly affected by true 5α-reductase inhibitors, but not reliably by saw palmetto**—finasteride/dutasteride produce predictable PSA suppression that clinicians adjust for; saw palmetto does not behave with that same consistency. Therefore the best statement is B: it captures why it is used, what it is claimed to do, and why PSA interpretation is typically not adjusted the same way as with bona fide 5α-reductase inhibitors."
+  },
+  {
+    "qstn": "A clinician wants to choose the most appropriate agent to eradicate intraluminal Entamoeba histolytica after treating invasive disease. Which statement best distinguishes diloxanide furoate from tissue-active therapy, and why does that distinction matter?",
+    "options": [
+      "A. Diloxanide furoate is tissue-active and replaces metronidazole for hepatic abscess treatment.",
+      "B. Diloxanide furoate is a luminal amebicide, so it targets intestinal cysts but is not sufficient for tissue trophozoites.",
+      "C. Diloxanide furoate is primarily bactericidal and is used to sterilize the colon after broad-spectrum antibiotics.",
+      "D. Diloxanide furoate is an antiprotozoal that requires iodine co-administration to be effective."
+    ],
+    "answer_letter": "B",
+    "used_terms": [
+      "diloxanide furoate is a luminal amebicide",
+      "luminal agents eradicate intraluminal cysts and reduce transmission",
+      "diloxanide furoate is not active against tissue trophozoites",
+      "tissue-invasive amebiasis requires a tissue-active agent (e.g., nitroimidazole) first",
+      "combination therapy addresses distinct compartments: lumen versus tissue"
+    ],
+    "reasoning": "Option **B** is correct because it reflects the compartmental pharmacology of amebiasis rather than treating all antiprotozoals as interchangeable. **Diloxanide furoate is a luminal amebicide**, meaning its clinically valuable effect is concentrated in the intestinal lumen. This matters because **luminal agents eradicate intraluminal cysts and reduce transmission**, which is exactly what you need after invasive disease has been controlled—to prevent relapse and interrupt fecal–oral spread. The complementary fact is decisive: **diloxanide furoate is not active against tissue trophozoites**, so it cannot substitute for initial therapy in hepatic abscess or invasive colitis. Instead, **tissue-invasive amebiasis requires a tissue-active agent (e.g., nitroimidazole) first**, followed by luminal clearance. That sequencing is not a preference; it is a direct consequence of where the organism resides during different phases of disease. In other words, **combination therapy addresses distinct compartments: lumen versus tissue**, and option B is the only choice that articulates that division correctly."
+  }
+]

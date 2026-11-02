@@ -1,0 +1,6 @@
+name: hard
+power: 10
+lam: 0.0
+runs: 20
+max_iter: 100
+tol: 1.0e-5
