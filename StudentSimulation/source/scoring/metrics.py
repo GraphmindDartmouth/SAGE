@@ -22,5 +22,6 @@ def summarize(beliefs: dict[str, dict[str, float]], truth: dict[str, bool]) -> d
         "macro_f1": float(f1_score(actual, predicted, average="macro", labels=[0, 1], zero_division=0)),
         "mse": float(np.mean((probabilities - actual) ** 2)),
         "mean_uncertainty": float(np.mean([uncertainty(beliefs[node]["alpha"], beliefs[node]["beta"]) for node in ids])),
+        "median_absolute_knowledge": float(np.median(np.abs(signed))),
         "directly_observed_nodes": sum(beliefs[node]["n_observations"] > 0 for node in ids),
     }

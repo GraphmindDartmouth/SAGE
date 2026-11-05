@@ -57,8 +57,6 @@ def parse_judgment(text: str, nodes: list[str]) -> dict[str, int]:
             raise ValueError(f"Judge classified a concept more than once: {node}")
         signs[node] = current
         assigned.add(node)
-    if seen_headers != set(HEADERS):
-        raise ValueError("Judge must provide mastered, confused, and unknown sections")
-    if assigned != set(nodes):
-        raise ValueError("Judge must classify every cluster concept exactly once")
+    if not seen_headers:
+        raise ValueError("Judge must provide a concept-classification section")
     return signs

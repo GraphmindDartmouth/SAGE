@@ -21,6 +21,10 @@ model:
   base_url: null
   temperature: 0.0
   max_tokens: 1200
+  student_temperature: 0.7
+  judge_temperature: 0.0
+  student_max_tokens: 512
+  judge_max_tokens: 4096
   max_attempts_per_question: 3
 
 simulation:

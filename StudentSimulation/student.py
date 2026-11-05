@@ -23,25 +23,37 @@ def load_examples(path: Path | None) -> list[Any]:
 
 
 # Func: Format one response exemplar without modifying its content.
-# Input: String or dictionary example record.
+# Input: String or dictionary example record and its display number.
 # Output: Readable example text.
-def format_example(example: Any) -> str:
+def format_example(example: Any, index: int) -> str:
     if isinstance(example, str):
-        return example.strip()
+        return f"Example {index}\n{example.strip()}"
     if not isinstance(example, dict):
         raise ValueError("Student example must be a string or object")
+    lines = [f"Example {index}"]
     question = str(example.get("qstn", example.get("question", ""))).strip()
-    options = "\n".join(str(option) for option in example.get("options", []))
-    answer = str(example.get("answer_letter", "")).strip()
+    if question:
+        lines.append(f"Question: {question}")
+    options = [str(option).strip() for option in example.get("options", []) if str(option).strip()]
+    if options:
+        lines.extend(["Options:", *options])
+    answer = str(example.get("answer_letter", "")).strip().upper()
+    if answer:
+        lines.append(f"Answer: {answer}")
+    used = [str(term).strip() for term in example.get("used_terms", []) if str(term).strip()]
+    if used:
+        lines.extend(["Concepts used:", *(f"- {term}" for term in used)])
     reasoning = str(example.get("reasoning", "")).strip()
-    return f"Question: {question}\n{options}\nAnswer: {answer}\nReasoning: {reasoning}".strip()
+    if reasoning:
+        lines.append(f"Reasoning: {reasoning}")
+    return "\n".join(lines)
 
 
 # Func: Present one MCQ as a stem followed by its four choices.
 # Input: Normalized assessment question record.
 # Output: Question text for student and judge prompts.
 def format_question(question: dict) -> str:
-    return question["question"] + "\n" + "\n".join(question["options"])
+    return question["question"] + "\n\n" + "\n".join(question["options"])
 
 
 class LLMResponder:
@@ -58,14 +70,14 @@ class LLMResponder:
         self.model = model
 
     # Func: Submit one chat request using configured model and sampling settings.
-    # Input: System and user prompt text.
+    # Input: System and user prompt text, temperature, and token budget.
     # Output: Nonempty model response text.
-    def complete(self, system: str, user: str) -> str:
+    def complete(self, system: str, user: str, temperature: float, max_tokens: int) -> str:
         response = self.client.chat.completions.create(
             model=str(self.model["id"]),
             messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
-            temperature=float(self.model["temperature"]),
-            max_tokens=int(self.model["max_tokens"]),
+            temperature=temperature,
+            max_tokens=max_tokens,
         )
         text = response.choices[0].message.content
         if not text:
@@ -84,10 +96,12 @@ class LLMResponder:
         return self.complete(
             str(prompt["system"]).format(topic=topic),
             str(prompt["user"]).format(
-                examples="\n\n".join(format_example(example) for example in selected) or "None",
+                examples="\n\n".join(format_example(example, index) for index, example in enumerate(selected, 1)),
                 nodes="\n".join(f"- {node}" for node in nodes),
                 question=format_question(question),
             ),
+            float(self.model.get("student_temperature", self.model["temperature"])),
+            int(self.model.get("student_max_tokens", self.model["max_tokens"])),
         )
 
     # Func: Judge concept-level understanding from the simulated response.
@@ -100,4 +114,6 @@ class LLMResponder:
                 question=format_question(question), answer=answer, reasoning=reasoning,
                 nodes="\n".join(f"- {node}" for node in nodes),
             ),
+            float(self.model.get("judge_temperature", self.model["temperature"])),
+            int(self.model.get("judge_max_tokens", self.model["max_tokens"])),
         )

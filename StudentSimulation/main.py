@@ -9,9 +9,6 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-import hydra
-from omegaconf import DictConfig, OmegaConf
-
 from initialization import SimulationData, initialize
 from source.propagation import chebyshev, distance_weighted, heat_kernel, ppnrp
 from source.propagation.common import apply_virtual_evidence, knowledge_vector
@@ -127,6 +124,7 @@ def run_simulation(
     asked: set[tuple[str, int]] = set()
     covered: set[str] = set()
     steps: list[dict] = []
+    skipped_questions: list[dict] = []
     max_questions = int(simulation["max_questions"])
     attempts = int(model["max_attempts_per_question"])
     if max_questions < 1 or attempts < 1:
@@ -140,8 +138,9 @@ def run_simulation(
         "ground_truth": data.truth,
         "dropped_overlap_questions": data.dropped_overlap_questions,
         "steps": steps,
+        "skipped_questions": skipped_questions,
     }
-    for _ in range(max_questions):
+    while len(steps) < max_questions:
         selected = select_question(data, beliefs, asked, covered, selection, selection_rng)
         if selected is None:
             break
@@ -153,20 +152,33 @@ def run_simulation(
         for _attempt in range(attempts):
             try:
                 response = responder.respond(
-                    profile, question, cluster_nodes, examples.get(profile, []),
+                    profile, question, tested, examples.get(profile, []),
                     profile_prompts, str(simulation["topic"]),
                     int(simulation["examples_per_response"]), example_rng,
                 )
                 answer, reasoning = parse_response(response)
-                judgment = responder.judge(
-                    question, answer, reasoning, cluster_nodes, scoring, str(simulation["topic"]),
-                )
-                signs = parse_judgment(judgment, cluster_nodes)
+                chunk_size = int(scoring["judge_chunk_size"])
+                if chunk_size < 1:
+                    raise ValueError("scoring.judge_chunk_size must be positive")
+                chunks = [
+                    cluster_nodes[start:start + chunk_size]
+                    for start in range(0, len(cluster_nodes), chunk_size)
+                ]
+                signs = {}
+                for chunk in chunks:
+                    judgment = responder.judge(
+                        question, answer, reasoning, chunk, scoring, str(simulation["topic"]),
+                    )
+                    signs.update(parse_judgment(judgment, chunk))
                 break
             except (ValueError, KeyError) as exc:
                 failure = exc
         else:
-            raise RuntimeError(f"Could not score cluster {cluster_id} question {index}: {failure}")
+            skipped_questions.append({
+                "cluster_id": cluster_id, "question_index": index, "reason": str(failure),
+            })
+            asked.add((cluster_id, index))
+            continue
         correct = answer == question["answer_letter"]
         evidence = response_evidence(
             cluster_nodes, tested, correct, signs,
@@ -212,8 +224,9 @@ def run_simulation(
 # Func: Load Hydra settings, initialize a hidden student, and run assessment.
 # Input: Paths, selected methods, scoring settings, model, and question budget.
 # Output: Saved trajectory JSON under the configured destination.
-@hydra.main(version_base=None, config_path="configurations", config_name="main")
-def main(cfg: DictConfig) -> None:
+def main(cfg: Any) -> None:
+    from omegaconf import OmegaConf
+
     project_dir = Path(__file__).resolve().parent
     paths = {
         key: resolve_path(project_dir, str(value)) if value is not None else None
@@ -236,5 +249,14 @@ def main(cfg: DictConfig) -> None:
     print(f"Saved {result['questions_asked']} simulated interactions to {paths['output']}")
 
 
+# Func: Start the configured simulation through Hydra's command-line interface.
+# Input: Optional Hydra overrides from the command line.
+# Output: Saved trajectory from main.
+def cli() -> None:
+    import hydra
+
+    hydra.main(version_base=None, config_path="configurations", config_name="main")(main)()
+
+
 if __name__ == "__main__":
-    main()
+    cli()

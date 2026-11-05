@@ -173,58 +173,40 @@ def assign_mastery(
     return selected, node_truth(memberships, selected)
 
 
-# Func: Assign each overlapping concept to one cluster using graph structure only.
-# Input: Original clusters, line graph, and deterministic seed.
-# Output: Nonoverlapping clusters and count of questions crossing ownership.
-def harden_overlaps(
-    clusters: dict[str, dict], graph: nx.Graph, seed: int
+# Func: Keep each cluster's concepts consistent with its assigned mastery state.
+# Input: Overlapping clusters, node truth, and mastered cluster IDs.
+# Output: Profile-aligned clusters and count of questions with no tested concepts.
+def align_profile(
+    clusters: dict[str, dict], truth: dict[str, bool], mastered: set[str]
 ) -> tuple[dict[str, dict], int]:
-    rng = random.Random(seed)
-    memberships: dict[str, set[str]] = defaultdict(set)
-    mentioned_in: dict[str, set[str]] = defaultdict(set)
-    for cluster_id, record in clusters.items():
-        for node in record["nodes"]:
-            memberships[node].add(cluster_id)
-        for question in record["questions"]:
-            for node in question["used_terms"]:
-                mentioned_in[node].add(cluster_id)
-    cluster_node_sets = {cluster_id: set(record["nodes"]) for cluster_id, record in clusters.items()}
-    ownership: dict[str, str] = {}
-    for node in graph.nodes():
-        candidates = memberships[node]
-        observed_candidates = candidates & mentioned_in[node]
-        eligible = observed_candidates or candidates
-        neighbors = set(graph.neighbors(node))
-        scored = {
-            cluster_id: len(neighbors & cluster_node_sets[cluster_id]) / max(1, len(neighbors))
-            for cluster_id in eligible
-        }
-        maximum = max(scored.values())
-        ownership[node] = rng.choice(sorted(cluster_id for cluster_id, score in scored.items() if score == maximum))
-    hardened: dict[str, dict] = {}
+    aligned: dict[str, dict] = {}
     dropped = 0
     for cluster_id, record in clusters.items():
-        nodes = [node for node in record["nodes"] if ownership[node] == cluster_id]
+        nodes = [node for node in record["nodes"] if truth[node] == (cluster_id in mastered)]
         allowed = set(nodes)
-        questions = [question for question in record["questions"] if set(question["used_terms"]).issubset(allowed)]
-        dropped += len(record["questions"]) - len(questions)
-        if nodes:
-            hardened[cluster_id] = {"nodes": nodes, "questions": questions}
-    return hardened, dropped
+        questions = []
+        for question in record["questions"]:
+            used = [node for node in question["used_terms"] if node in allowed]
+            if not used:
+                dropped += 1
+                continue
+            questions.append({**question, "used_terms": used})
+        aligned[cluster_id] = {"nodes": nodes, "questions": questions}
+    return aligned, dropped
 
 
 # Func: Initialize one hidden student profile from saved graph and questions.
 # Input: Asset paths, mastery fraction, and deterministic seed.
-# Output: Aligned graph, topology-hardened questions, and hidden node truth.
+# Output: Aligned graph, profile-consistent questions, and hidden node truth.
 def initialize(
     graph_path: Path, cluster_path: Path, question_path: Path,
     mastery_fraction: float, seed: int,
 ) -> SimulationData:
     graph, node_ids = load_graph(graph_path)
     clusters = load_clusters_and_questions(cluster_path, question_path, set(node_ids))
-    hardened, dropped = harden_overlaps(clusters, graph, seed)
-    topology, memberships = cluster_topology(hardened, graph)
+    topology, memberships = cluster_topology(clusters, graph)
     mastered, truth = assign_mastery(topology, memberships, mastery_fraction, seed)
-    if not any(record["questions"] for record in hardened.values()):
-        raise ValueError("Overlap resolution left no valid assessment questions")
-    return SimulationData(graph, node_ids, hardened, truth, mastered, dropped)
+    aligned, dropped = align_profile(clusters, truth, mastered)
+    if not any(record["questions"] for record in aligned.values()):
+        raise ValueError("Profile alignment left no valid assessment questions")
+    return SimulationData(graph, node_ids, aligned, truth, mastered, dropped)

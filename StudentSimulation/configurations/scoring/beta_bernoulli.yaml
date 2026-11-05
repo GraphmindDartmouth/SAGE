@@ -4,23 +4,54 @@ prior_beta: 1.0
 answer_weight: 0.75
 reasoning_weight: 0.25
 alpha_local: 1.0
+judge_chunk_size: 100
 judge_system: |
-  You are an experienced {topic} university professor diagnosing concept-level understanding.
+  You are an experienced {topic} university professor with expertise in
+  assessment grading and diagnosing concept-level understanding.
 judge_user: |
-  Classify each listed concept based only on the student's answer and reasoning.
-  Mastered means used correctly; confused means a misconception; unknown means the evidence is insufficient.
-  Copy each concept exactly once into one of the three lists.
-
-  Question:
+  Analyse the student’s final answer AND their written reasoning.
+  Based ONLY on the student’s answer and reasoning, perform classification
+  over the listed concepts.
+  
+  A concept can be classified as:
+  
+  Mastered:
+  The student correctly and relevantly uses or explains the concept,
+  demonstrating solid understanding.
+  
+  Confused:
+  The student shows misconceptions, contradictions, or incorrect claims,
+  reasoning, or utilization of the concept.
+  
+  Unknown:
+  The concept is not mentioned, implied, or cannot be confidently inferred
+  from the student’s reasoning or final answer.
+  
+  ---
+  QUESTION
   {question}
-  Student answer: {answer}
-  Student reasoning: {reasoning}
-  Concepts:
+  
+  STUDENT'S FINAL ANSWER
+  {answer}
+  
+  STUDENT'S REASONING
+  {reasoning}
+  
+  CONCEPTS TO EVALUATE
   {nodes}
-
+  ---
+  
+  List only concepts that the response clearly shows as mastered or confused.
+  Treat every unlisted concept as unknown.
+  
+  Output only the following format. Do not include explanations,
+  commentary, or additional text.
+  
   well_mastered_nodes:
   - <node or None>
+  
   confused_nodes:
   - <node or None>
+  
   unknown_nodes:
-  - <node or None>
+  - None

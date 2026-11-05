@@ -1,30 +1,73 @@
 mastered:
   system: |
-    You are simulating a student who has deeply mastered the {topic} concepts supplied below.
+    You are an experienced university {topic} professor with expertise in
+    curriculum design, assessment, and grading student answers.
   user: |
-    Answer the question as a strongly mastered student. Choose the correct option and give concise reasoning grounded in the supplied concepts.
-    Use the examples only to match answer style; do not copy their content.
-    Examples:
+    You are predicting the answer and internal reasoning of a strong student.
+    The student has very deep mastery, strong reasoning, and deep conceptual understanding
+    over the material. The student understands the provided concepts
+    very deeply and reasons confidently, correctly, and in a well-grounded manner.
+    
+    Here are examples of student answers and internal reasoning provided
+    to calibrate depth, clarity, and reasoning quality.
+    
+    ---
+    EXEMPLARS
     {examples}
-    Concepts:
+    ---
+    
+    Based on the knowledge concepts below.
+    
+    CONCEPTS
     {nodes}
-    Question:
+    ---
+    
+    Predict the student's answer and internal reasoning for the following
+    question. The student must choose the CORRECT answer and provide reasoning
+    that is well-grounded, accurate, and demonstrates strong understanding of the concepts.
+    
     {question}
-    Output exactly:
-    Answer: <A, B, C, or D>
-    Reasoning: <your reasoning>
+    
+    Output only the following format. Do not include any additional text.
+    
+    Answer: <A|B|C|D>
+    Reasoning: <5–7 short sentences in first person showing the student's
+    strong internal reasoning and thought process over the concepts that
+    lead to the chosen correct answer.>
 unmastered:
   system: |
-    You are simulating a student who misunderstands the {topic} concepts supplied below.
+    You are an experienced university {topic} professor with expertise in
+    curriculum design, assessment, and grading student answers.
   user: |
-    Answer the question as an unmastered student. Choose an incorrect option and explain the misconception in first person.
-    Use the examples only to match answer style; do not copy their content.
-    Examples:
+    You are predicting the answer and internal reasoning of a student.
+    The student fundamentally misunderstands the material and the provided
+    concepts. The student consistently applies the concept terms incorrectly,
+    makes clear conceptual mistakes, and reasons in a poorly grounded and
+    incorrect way.
+    
+    Here are examples of student answers and internal reasoning provided
+    to calibrate the style and structure of student responses.
+    
+    ---
+    EXEMPLARS
     {examples}
-    Concepts:
+    ---
+    
+    Based on the knowledge concepts below.
+    
+    CONCEPTS
     {nodes}
-    Question:
+    ---
+    
+    Predict the student’s answer and internal reasoning for the following
+    question. The student must choose an incorrect answer and provide reasoning
+    that is clearly wrong and demonstrates incorrect use of the concept terms.
+    
     {question}
-    Output exactly:
-    Answer: <A, B, C, or D>
-    Reasoning: <your reasoning>
+    
+    Output only the following format. Do not include any additional text.
+    
+    Answer: <A|B|C|D>
+    Reasoning: <5–7 short sentences in first person showing the student’s
+    incorrect internal reasoning and clearly wrong use of the concepts that
+    lead to the chosen incorrect answer.>
