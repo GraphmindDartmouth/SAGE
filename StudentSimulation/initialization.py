@@ -134,10 +134,15 @@ def mastered_set(topology: dict[str, dict[str, int]], count: int, seed: int) -> 
     weighted_degree = {cluster_id: sum(topology[cluster_id].values()) for cluster_id in ids}
     best_degree = max(weighted_degree.values())
     chosen = {rng.choice([cluster_id for cluster_id in ids if weighted_degree[cluster_id] == best_degree])}
+    first = next(iter(chosen))
+    gains = {cluster_id: topology[cluster_id].get(first, 0) for cluster_id in ids if cluster_id != first}
     while len(chosen) < count:
-        gains = {cluster_id: sum(topology[cluster_id].get(mastered, 0) for mastered in chosen) for cluster_id in ids if cluster_id not in chosen}
         best_gain = max(gains.values())
-        chosen.add(rng.choice([cluster_id for cluster_id in ids if gains.get(cluster_id) == best_gain]))
+        selected = rng.choice([cluster_id for cluster_id in ids if gains.get(cluster_id) == best_gain])
+        chosen.add(selected)
+        del gains[selected]
+        for cluster_id in gains:
+            gains[cluster_id] += topology[cluster_id].get(selected, 0)
     return chosen
 
 
